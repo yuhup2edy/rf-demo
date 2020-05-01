@@ -1,0 +1,40 @@
+<div class="container-fluid">
+  <h2> Resource Access Request for Realogy Title</h2>
+  <form [formGroup]="registrationForm">
+    {{registrationForm.value | json }}
+    <div class="form-group">
+      <label> Requester **</label>
+      <input formControlName = "requester" type="text" class="form-control">
+    </div>
+    
+    <div class="form-group">
+      <label> Password </label>
+      <input formControlName = "password" type="password" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label> Confirm Password </label>
+      <input formControlName = "confirmPassword" type="password" class="form-control">
+    </div>
+ 
+    <div formGroupName = "address">
+      <div class="form-group">
+        <label> City </label>
+        <input formControlName = "city" type="text" class="form-control">
+      </div>
+      <div class="form-group">
+        <label> State </label>
+        <input formControlName = "state" type="text" class="form-control">
+      </div>
+      <div class="form-group">
+        <label> ZipCode </label>
+        <input formControlName = "zipCode" type="text" class="form-control">
+      </div>
+    
+    </div>
+    <button class="btn btn-primary" type="submit"> Register </button>
+
+
+  </form>
+  
+</div>
