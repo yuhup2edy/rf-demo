@@ -16,7 +16,7 @@
       <label> Confirm Password </label>
       <input formControlName = "confirmPassword" type="password" class="form-control">
     </div>
- 
+    
     <div formGroupName = "address">
       <div class="form-group">
         <label> City </label>
@@ -32,8 +32,9 @@
       </div>
     
     </div>
-    <button class="btn btn-primary" type="submit"> Register </button>
-
+    <button class="btn btn-secondary" type="submit"> Register </button> &nbsp;
+    <button (click)="loadAPI()" class="btn btn-secondary ,ml-2" type="button"> Load API Data </button>
+    
 
   </form>
   
