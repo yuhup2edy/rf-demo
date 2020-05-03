@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <h2> Resource Access Request for Realogy Title</h2>
-  <form [formGroup]="registrationForm">
+  <form [formGroup]="registrationForm" novalidate (submit)="onSubmit()">
     {{registrationForm.value | json }} 
     <div class="form-group">
       <label> Requester **</label>
@@ -83,7 +83,7 @@
       </div>
     
     </div>
-    <button class="btn btn-secondary" type="submit"> Register </button> &nbsp;
+    <button [disabled]='!registrationForm.valid' class="btn btn-secondary" type="submit"> Register </button> &nbsp;
     <button (click)="loadAPI()" class="btn btn-secondary ,ml-2" type="button"> Load API Data </button>
     
 

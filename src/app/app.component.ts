@@ -3,6 +3,7 @@ import { FormArray, FormGroup, FormControl } from '@angular/forms';
 import { FormBuilder, Validators } from '@angular/forms';
 import { forbiddenRequesterFunction } from './shared/requester-name.validator';
 import { passwordValidator } from './shared/password.validator';
+import { RegistrationService } from './registration.service';
 //import { timingSafeEqual } from 'crypto';
 
 @Component({
@@ -33,7 +34,7 @@ export class AppComponent implements OnInit
     this.alternateEmails.push(this.fb.control('')); // this will just push a new form control upon a click event of however called
   }
 
-  constructor(private fb : FormBuilder)
+  constructor(private fb : FormBuilder, private _registrationService : RegistrationService)
   {
     //depedency injection completed
   }
@@ -115,4 +116,16 @@ loadAPI()
   }
   );
 } // loadAPI() closure
+
+onSubmit()
+{
+  //console.log(this.registrationForm.value);
+  this._registrationService.submitRar(this.registrationForm.value)
+      .subscribe(
+        response => console.log('Success', response),
+        error => console.log('error',error)
+      );
+
+} // onSubmit Closure
+
 } // class closure
