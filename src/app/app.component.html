@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <h2> Resource Access Request for Realogy Title</h2>
   <form [formGroup]="registrationForm">
-    {{registrationForm.value | json }}
+    {{registrationForm.value | json }} 
     <div class="form-group">
       <label> Requester **</label>
       <input 
@@ -20,8 +20,12 @@
       <small class="text-danger" *ngIf="registrationForm.get('requester').errors?.required"> 
               Requester Field cannot be empty</small>
       <small class="text-danger"  *ngIf="registrationForm.get('requester').errors?.minlength"> 
-             Requester Field should be min 3 characters long</small>
-    </div>
+             Requester Field should be min 3 characters long;</small>
+      <small class="text-danger"  *ngIf="registrationForm.get('requester').errors?.pattern"> 
+              Requester Field should be alphabetic</small>
+      <small class="text-danger"  *ngIf="registrationForm.get('requester').errors?.forbiddenRequester"> 
+              {{registrationForm.get('requester').errors?.forbiddenRequester.value}} as requester name not allowed </small>  
+      </div>
     
     <div class="form-group">
       <label> Password </label>
