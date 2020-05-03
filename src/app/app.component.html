@@ -37,12 +37,36 @@
       <!-- remember that the errors class is applied against the registration form errors and mismatch is return key from 
            the password validator function  -->
       <input 
-          [class.is-invalid]="registrationForm.errors?.mismatch"
           formControlName = "confirmPassword" 
           type="password" 
           class="form-control">
           <small *ngIf="registrationForm.errors?.mismatch"  class="text-danger">  Password Mismatch </small>      
     </div>
+
+    <!--  use the getter function email. from the component.ts-->
+    <!-- here email is the name of the getter function -->
+
+    <div class="form-group">
+      <label> Email </label>
+      <button type="button" class="btn btn-secondary btn-small m-2" (click)="addAlternateEmail()">Add Alternate email</button>
+      <input
+           [class.is-invalid]="email.invalid && email.touched" 
+           formControlName = "email" 
+           type="text" 
+           class="form-control">
+      <small class="text-danger" [class.d-none]="email.valid || email.untouched"> Email Required Field if subscribed to promo</small>  
+      <!-- begin to display the dynamic form fields added on the button click
+          formArrayName to keep track of hte array, index for # of elements and bound to formControlName -->
+      <div formArrayName = "alternateEmails" *ngFor = "let email of alternateEmails.controls; let i = index">
+         <input type="text" class="form-control my-1" [formControlName] = "i">
+      </div>
+    </div>
+
+    <div class="form-check mb-3">
+      <input class="form-check-input" formControlName="subscribe" type="checkbox">
+      <label> Sign Up for Promotions </label>
+    </div>
+
     
     <div formGroupName = "address">
       <div class="form-group">
