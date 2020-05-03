@@ -13,6 +13,7 @@ import {AbstractControl, ValidatorFn} from '@angular/forms';
 // declaring a factory function that can take parameter and return of type Vaidator function. this is because the regular function 
 // can take only one argument which is the abstract control and not anything from the HTML form. see above function for example
 // the => operator converts this into a regular function 
+
 export function forbiddenRequesterFunction(forbiddenRequester : RegExp) : ValidatorFn 
 {
     return (control : AbstractControl) : {[key:string]:any} | null =>

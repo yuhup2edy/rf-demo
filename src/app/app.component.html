@@ -33,8 +33,15 @@
     </div>
 
     <div class="form-group">
-      <label> Confirm Password </label>
-      <input formControlName = "confirmPassword" type="password" class="form-control">
+    <label> Confirm Password </label>
+      <!-- remember that the errors class is applied against the registration form errors and mismatch is return key from 
+           the password validator function  -->
+      <input 
+          [class.is-invalid]="registrationForm.errors?.mismatch"
+          formControlName = "confirmPassword" 
+          type="password" 
+          class="form-control">
+          <small *ngIf="registrationForm.errors?.mismatch"  class="text-danger">  Password Mismatch </small>      
     </div>
     
     <div formGroupName = "address">

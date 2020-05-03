@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { FormBuilder, Validators } from '@angular/forms';
 import { forbiddenRequesterFunction } from './shared/requester-name.validator';
+import { passwordValidator } from './shared/password.validator';
 
 @Component({
   selector: 'app-root',
@@ -38,8 +39,10 @@ export class AppComponent {
           zipCode : ['22033']
         }
       )
-    }
-  );
+    },{validator : passwordValidator}
+ // remember to pass the validator function for password as 2nd arg to the registration from control and not the individual fields
+    );
+
 
   loadAPI()
   {
